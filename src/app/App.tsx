@@ -1,49 +1,42 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "motion/react";
-import { Toaster } from "@/app/components/ui/sonner";
+import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { ErrorBoundary } from "@/app/components/ErrorBoundary";
+import { SkipToMain } from "@/app/components/SkipToMain";
 import { Header } from "@/app/components/Header";
-import { Footer } from "@/app/components/Footer";
-import { FloatingCallButton } from "@/app/components/FloatingCallButton";
+import { Breadcrumb } from "@/app/components/Breadcrumb";
+import { EnhancedFooter } from "@/app/components/EnhancedFooter";
+import { AnimatedRoutes } from "@/app/components/AnimatedRoutes";
 import { SEOMetadata } from "@/app/components/SEOMetadata";
 import { ScrollProgress } from "@/app/components/ScrollProgress";
-import { HomePage } from "@/app/pages/HomePage";
-import { ServicesPage } from "@/app/pages/ServicesPage";
-import { AboutPage } from "@/app/pages/AboutPage";
-import { CaseStudiesPage } from "@/app/pages/CaseStudiesPage";
-import { CaseStudyDetailPage } from "@/app/pages/CaseStudyDetailPage";
-import { ContactPage } from "@/app/pages/ContactPage";
-
-function AnimatedRoutes() {
-  const location = useLocation();
-
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/case-studies" element={<CaseStudiesPage />} />
-        <Route path="/case-studies/:id" element={<CaseStudyDetailPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
-    </AnimatePresence>
-  );
-}
+import { ScrollToTop } from "@/app/components/ScrollToTop";
+import { StickyQuoteButton } from "@/app/components/StickyQuoteButton";
+import { ExitIntentPopup } from "@/app/components/ExitIntentPopup";
+import { LiveChatWidget } from "@/app/components/LiveChatWidget";
 
 export default function App() {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
   return (
-    <BrowserRouter>
-      <div className="min-h-screen bg-white">
-        <ScrollProgress />
-        <SEOMetadata />
-        <Header />
-        <main className="min-h-screen">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-        <FloatingCallButton />
-        <Toaster />
-      </div>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <div className="relative min-h-screen bg-white overflow-x-hidden">
+            <SkipToMain />
+            <ScrollProgress />
+            <SEOMetadata />
+            <Header />
+            <Breadcrumb />
+            <main id="main-content" className="relative min-h-screen">
+              <AnimatedRoutes />
+            </main>
+            <EnhancedFooter />
+            <LiveChatWidget />
+            <ExitIntentPopup onVisibilityChange={setIsPopupVisible} />
+          </div>
+        </BrowserRouter>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 }

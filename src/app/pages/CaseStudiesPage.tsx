@@ -69,9 +69,9 @@ const industries = [
 
 export function CaseStudiesPage() {
   return (
-    <motion.div {...pageTransition} className="pt-32 pb-20">
+    <motion.div {...pageTransition}>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-700 text-white py-20">
+      <section className="bg-gradient-to-br from-blue-600 to-blue-700 text-white py-20 pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeInUp} className="max-w-3xl">
             <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30">
@@ -128,25 +128,25 @@ export function CaseStudiesPage() {
 
                       {/* Client Details */}
                       <div className="grid grid-cols-2 gap-4 mb-6 pb-6 border-b">
-                        <div>
+                        <div className="space-y-1">
                           <div className="text-sm text-gray-500">Client</div>
                           <div className="font-semibold text-gray-900">
                             {study.client}
                           </div>
                         </div>
-                        <div>
+                        <div className="space-y-1">
                           <div className="text-sm text-gray-500">Location</div>
                           <div className="font-semibold text-gray-900">
                             {study.location}
                           </div>
                         </div>
-                        <div>
+                        <div className="space-y-1">
                           <div className="text-sm text-gray-500">Industry</div>
                           <div className="font-semibold text-gray-900">
                             {study.industry}
                           </div>
                         </div>
-                        <div>
+                        <div className="space-y-1">
                           <div className="text-sm text-gray-500">Facility Size</div>
                           <div className="font-semibold text-gray-900">
                             {study.size}
@@ -155,16 +155,16 @@ export function CaseStudiesPage() {
                       </div>
 
                       {/* Results */}
-                      <div className="grid grid-cols-3 gap-4 mb-6">
+                      <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-6">
                         {study.results.map((result, idx) => {
                           const Icon = result.icon;
                           return (
                             <div key={idx} className="text-center">
-                              <Icon className="size-8 text-blue-600 mx-auto mb-2" />
-                              <div className="text-2xl font-bold text-gray-900 mb-1">
+                              <Icon className="size-6 sm:size-8 text-blue-600 mx-auto mb-2" />
+                              <div className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 break-words">
                                 {result.value}
                               </div>
-                              <div className="text-xs text-gray-600">
+                              <div className="text-xs text-gray-600 leading-tight">
                                 {result.label}
                               </div>
                             </div>

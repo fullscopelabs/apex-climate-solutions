@@ -7,9 +7,9 @@ import { pageTransition } from "@/app/utils/animations";
 
 export function CaseStudyDetailPage() {
   return (
-    <motion.div {...pageTransition} className="pt-32 pb-20">
+    <motion.div {...pageTransition}>
       {/* Back Button */}
-      <section className="py-6 bg-white border-b">
+      <section className="pt-8 pb-6 md:pt-20 bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Button variant="ghost" asChild>
             <Link to="/case-studies">

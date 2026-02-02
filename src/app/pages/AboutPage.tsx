@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { About } from "@/app/components/About";
 import { Certifications } from "@/app/components/Certifications";
+import { MeetOurTeam } from "@/app/components/MeetOurTeam";
 import { Button } from "@/app/components/ui/button";
 import { Badge } from "@/app/components/ui/badge";
 import { Users, Target, Heart, Award } from "lucide-react";
@@ -64,9 +65,9 @@ const timeline = [
 
 export function AboutPage() {
   return (
-    <motion.div {...pageTransition} className="pt-32 pb-20">
+    <motion.div {...pageTransition}>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-700 text-white py-20">
+      <section className="bg-gradient-to-br from-blue-600 to-blue-700 text-white py-20 pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeInUp} className="max-w-3xl">
             <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30">
@@ -86,6 +87,9 @@ export function AboutPage() {
 
       {/* Main About Content */}
       <About />
+
+      {/* Meet Our Team */}
+      <MeetOurTeam />
 
       {/* Core Values */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">

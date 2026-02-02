@@ -59,7 +59,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -93,9 +93,10 @@ export function Services() {
                 <motion.div
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.3 }}
+                  className="h-full"
                 >
-                  <Card className="h-full hover:shadow-xl transition-shadow duration-300 group">
-                    <CardHeader>
+                  <Card className="h-full flex flex-col hover:shadow-xl transition-shadow duration-300 group">
+                    <CardHeader className="flex-1 flex flex-col p-6">
                       <motion.div
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -103,11 +104,11 @@ export function Services() {
                       >
                         <Icon className="size-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
                       </motion.div>
-                      <CardTitle className="mb-2">{service.title}</CardTitle>
-                      <CardDescription className="text-gray-600 mb-4">
+                      <CardTitle className="mb-3 text-xl">{service.title}</CardTitle>
+                      <CardDescription className="text-gray-600 mb-6 flex-grow min-h-[4.5rem]">
                         {service.description}
                       </CardDescription>
-                      <ul className="space-y-2">
+                      <ul className="space-y-2.5 mt-auto">
                         {service.features.map((feature, idx) => (
                           <motion.li
                             key={idx}
@@ -120,7 +121,7 @@ export function Services() {
                             <motion.div
                               animate={{ scale: [1, 1.2, 1] }}
                               transition={{ duration: 2, repeat: Infinity, delay: idx * 0.2 }}
-                              className="size-1.5 bg-blue-600 rounded-full"
+                              className="size-1.5 bg-blue-600 rounded-full flex-shrink-0"
                             />
                             {feature}
                           </motion.li>

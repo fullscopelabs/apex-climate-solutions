@@ -1,5 +1,6 @@
 import { MapPin, CheckCircle2 } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
+import { Link } from "react-router-dom";
 
 const areas = [
   {
@@ -52,7 +53,7 @@ export function ServiceAreas() {
   };
 
   return (
-    <section id="service-areas" className="py-20 bg-gradient-to-br from-blue-50 to-gray-50">
+    <section id="service-areas" className="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -105,9 +106,9 @@ export function ServiceAreas() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              onClick={() => scrollToSection("contact")}
+              asChild
             >
-              Check Service Availability
+              <Link to="/contact">Check Service Availability</Link>
             </Button>
             <Button
               size="lg"

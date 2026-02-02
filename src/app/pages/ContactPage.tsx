@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Contact } from "@/app/components/Contact";
+import { EnhancedContact } from "@/app/components/EnhancedContact";
 import { Badge } from "@/app/components/ui/badge";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { pageTransition, fadeInUp } from "@/app/utils/animations";
@@ -12,9 +12,9 @@ const serviceAreas = [
 
 export function ContactPage() {
   return (
-    <motion.div {...pageTransition} className="pt-32 pb-20">
+    <motion.div {...pageTransition}>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-700 text-white py-20">
+      <section className="bg-gradient-to-br from-blue-600 to-blue-700 text-white py-20 pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeInUp} className="max-w-3xl">
             <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30">
@@ -124,7 +124,7 @@ export function ContactPage() {
       </section>
 
       {/* Main Contact Form */}
-      <Contact />
+      <EnhancedContact />
 
       {/* Service Areas */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">

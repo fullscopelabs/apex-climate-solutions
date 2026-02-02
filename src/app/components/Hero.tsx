@@ -7,10 +7,11 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 
 export function Hero() {
   return (
-    <section id="home" className="relative bg-gradient-to-br from-gray-50 to-blue-50 pt-32 pb-20 overflow-hidden">
+    <section id="home" className="relative bg-gradient-to-br from-gray-50 to-blue-50 pt-24 sm:pt-32 pb-16 sm:pb-20 overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
+          initial={false}
           animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 90, 0],
@@ -23,6 +24,7 @@ export function Hero() {
           className="absolute -top-1/2 -right-1/2 w-full h-full bg-blue-100/30 rounded-full blur-3xl"
         />
         <motion.div
+          initial={false}
           animate={{
             scale: [1.2, 1, 1.2],
             rotate: [90, 0, 90],
@@ -37,7 +39,7 @@ export function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -49,7 +51,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <Badge className="mb-4 bg-blue-100 text-blue-700 hover:bg-blue-100">
+              <Badge className="mb-3 sm:mb-4 bg-blue-100 text-blue-700 hover:bg-blue-100 text-xs sm:text-sm">
                 26+ Years of Excellence
               </Badge>
             </motion.div>
@@ -58,7 +60,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight"
             >
               Commercial HVAC Solutions Built for Reliability
             </motion.h1>
@@ -67,7 +69,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg text-gray-600 mb-8"
+              className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8"
             >
               Apex Climate Solutions delivers enterprise-grade heating,
               cooling, and ventilation systems for commercial facilities
@@ -80,13 +82,13 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 mb-8"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" asChild className="text-lg px-8">
+                <Button size="lg" asChild className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8">
                   <Link to="/contact">
                     Get Free Quote
-                    <ArrowRight className="ml-2 size-5" />
+                    <ArrowRight className="ml-2 size-4 sm:size-5" />
                   </Link>
                 </Button>
               </motion.div>
@@ -96,10 +98,10 @@ export function Hero() {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="text-lg px-8"
+                  className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8"
                 >
                   <a href="tel:+18885551234">
-                    <Phone className="mr-2 size-5" />
+                    <Phone className="mr-2 size-4 sm:size-5" />
                     (888) 555-1234
                   </a>
                 </Button>
@@ -111,7 +113,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex flex-wrap gap-6 text-sm"
+              className="flex flex-wrap gap-4 sm:gap-6 text-xs sm:text-sm"
             >
               {[
                 "24/7 Emergency Service",
@@ -126,6 +128,7 @@ export function Hero() {
                   className="flex items-center gap-2"
                 >
                   <motion.div
+                    initial={false}
                     animate={{
                       scale: [1, 1.2, 1],
                     }}
@@ -133,8 +136,9 @@ export function Hero() {
                       duration: 2,
                       repeat: Infinity,
                       delay: index * 0.3,
+                      ease: "easeInOut",
                     }}
-                    className="size-2 bg-green-500 rounded-full"
+                    className="size-2 bg-green-500 rounded-full flex-shrink-0"
                   />
                   <span className="text-gray-600">{item}</span>
                 </motion.div>
@@ -147,7 +151,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -166,7 +170,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="absolute -bottom-6 left-6 right-6 grid grid-cols-3 gap-4"
+              className="absolute -bottom-6 left-6 right-6 grid grid-cols-3 gap-3 sm:gap-4"
             >
               {[
                 { value: "500+", label: "Active Clients" },
@@ -179,16 +183,18 @@ export function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2 + index * 0.1, duration: 0.5 }}
                   whileHover={{ y: -4, scale: 1.05 }}
-                  className="bg-white rounded-lg shadow-lg p-4 text-center cursor-default"
+                  className="bg-white rounded-lg shadow-lg p-3 sm:p-4 text-center cursor-default"
                 >
                   <motion.div
+                    initial={false}
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{
                       duration: 2,
                       repeat: Infinity,
                       delay: index * 0.3,
+                      ease: "easeInOut",
                     }}
-                    className="text-2xl font-bold text-blue-600"
+                    className="text-xl sm:text-2xl font-bold text-blue-600"
                   >
                     {stat.value}
                   </motion.div>

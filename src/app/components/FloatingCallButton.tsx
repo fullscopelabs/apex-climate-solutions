@@ -11,6 +11,7 @@ export function FloatingCallButton() {
       className="fixed bottom-6 right-6 z-40 md:hidden"
     >
       <motion.div
+        initial={false}
         animate={{ y: [0, -10, 0] }}
         transition={{
           duration: 2,
@@ -21,9 +22,10 @@ export function FloatingCallButton() {
         <Button
           size="lg"
           onClick={() => window.location.href = "tel:+18885551234"}
-          className="size-16 rounded-full shadow-2xl relative"
+          className="size-16 rounded-full shadow-2xl relative bg-amber-500 hover:bg-amber-600 cursor-pointer"
         >
           <motion.div
+            initial={false}
             animate={{ scale: [1, 1.1, 1] }}
             transition={{
               duration: 1.5,
@@ -38,6 +40,7 @@ export function FloatingCallButton() {
       
       {/* Pulsing ring effect */}
       <motion.div
+        initial={false}
         animate={{
           scale: [1, 1.5],
           opacity: [0.6, 0],
@@ -46,12 +49,14 @@ export function FloatingCallButton() {
           duration: 2,
           repeat: Infinity,
           ease: "easeOut",
+          repeatDelay: 0,
         }}
-        className="absolute inset-0 bg-blue-600 rounded-full"
+        className="absolute inset-0 bg-amber-500 rounded-full pointer-events-none"
       />
       
       {/* Online indicator */}
       <motion.div
+        initial={false}
         animate={{ scale: [1, 1.2, 1] }}
         transition={{
           duration: 2,

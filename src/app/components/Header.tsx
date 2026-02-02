@@ -8,6 +8,9 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  
+  // Check if we're on the home page
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,19 +45,21 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white/95 backdrop-blur-sm shadow-md"
-          : "bg-white"
+          : isHomePage 
+            ? "bg-white/90 backdrop-blur-md shadow-sm" 
+            : "bg-white"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top bar with emergency contact */}
-        <div className="border-b border-gray-200 py-2">
+        <div className="border-b border-gray-200 py-2 hidden md:block">
           <div className="flex items-center justify-between text-sm">
             <div className="text-gray-600">
               Licensed & Insured | 24/7 Emergency Service
             </div>
             <a
               href="tel:+18885551234"
-              className="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+              className="flex items-center gap-2 font-semibold text-blue-600 hover:text-blue-700 transition-colors"
             >
               <Phone className="size-4" />
               <span className="hidden sm:inline">(888) 555-1234</span>
@@ -90,8 +95,10 @@ export function Header() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative text-gray-700 hover:text-blue-600 transition-colors ${
-                    isActive(link.path) ? "text-blue-600" : ""
+                  className={`relative transition-colors ${
+                    isActive(link.path) 
+                      ? "text-blue-600 font-semibold"
+                      : "text-gray-700 hover:text-blue-600"
                   }`}
                 >
                   {link.label}
@@ -108,17 +115,23 @@ export function Header() {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-3">
-              <Button variant="outline" asChild>
+              <Button 
+                asChild
+                className="bg-amber-500 hover:bg-amber-600 text-white"
+              >
                 <Link to="/contact">Get Quote</Link>
               </Button>
-              <Button asChild>
+              <Button 
+                asChild
+                className="bg-red-600 hover:bg-red-700 text-white"
+              >
                 <a href="tel:+18885551234">Emergency Service</a>
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 text-gray-900 transition-colors cursor-pointer"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
@@ -159,7 +172,7 @@ export function Header() {
                 <Button variant="outline" asChild className="w-full">
                   <Link to="/contact">Get Quote</Link>
                 </Button>
-                <Button asChild className="w-full">
+                <Button asChild className="w-full bg-red-600 hover:bg-red-700 text-white">
                   <a href="tel:+18885551234">Emergency Service</a>
                 </Button>
               </div>
